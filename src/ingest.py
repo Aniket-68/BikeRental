@@ -2,6 +2,7 @@ from pathlib import Path
 import pandas as pd
 from validation import validate_data
 from features import prepare_features
+from split_data import temporal_split
 
 # Resolve the project folder from this script's location.
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -54,3 +55,28 @@ print(timestamps.shape)
 assert len(X) == len(y) == len(timestamps)
 assert timestamps.is_monotonic_increasing
 print("All checks passed: lengths are equal and timestamps are in chronological order.")
+
+
+# Split the data into train, validation, and test sets.
+print("Splitting data into train, validation, and test sets...")
+splits = temporal_split(X, y, timestamps)
+
+# Each dictionary entry holds a tuple: (features, target).
+X_train, y_train = splits["train"]
+X_val, y_val = splits["validation"]
+X_test, y_test = splits["test"]
+
+print("Training:", X_train.shape, y_train.shape)
+print("Validation:", X_val.shape, y_val.shape)
+print("Test:", X_test.shape, y_test.shape)
+
+# Every observation must belong to exactly one split.
+assert len(X_train) + len(X_val) + len(X_test) == len(X)
+
+# Verify that no row index occurs in two splits.
+assert X_train.index.intersection(X_val.index).empty
+assert X_train.index.intersection(X_test.index).empty
+assert X_val.index.intersection(X_test.index).empty
+
+# Keep validation and test observations out of ALL fitting operations,
+# including encoders, scalers, and missing-value imputers.
