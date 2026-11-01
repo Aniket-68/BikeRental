@@ -2,3 +2,7 @@ pandas
 numpy
 fastapi
 uvicorn
+mlflow
+scikit-learn
+pydantic
+threadpoolctl
