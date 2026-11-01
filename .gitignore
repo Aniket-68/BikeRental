@@ -1,4 +1,4 @@
-data
+/data/raw/hour.csv
 .venv
 # MLflow experiment data and model artifacts
 mlruns/

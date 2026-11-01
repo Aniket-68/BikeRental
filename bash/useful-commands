@@ -1,0 +1,12 @@
+# Preserve your direct dependency list.
+Copy-Item requirements.txt requirements.in
+
+# Resolve ALL dependencies, including colorama, into a pinned requirements.txt.
+uv pip compile requirements.in --python .\.venv\Scripts\python.exe --output-file requirements.txt
+
+# Install the complete dependency set.
+uv pip sync --python .\.venv\Scripts\python.exe requirements.txt
+
+# Verify package compatibility and DVC startup.
+uv pip check
+.\.venv\Scripts\dvc.exe --version
