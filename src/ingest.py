@@ -1,5 +1,6 @@
 from pathlib import Path
 import pandas as pd
+from validation import validate_data
 
 # Resolve the project folder from this script's location.
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -30,3 +31,6 @@ print(df.info())
 missing_values = df.isna().sum()
 print("Missing values in the dataset:")
 print(missing_values)
+
+validate_data(df)
+print("Data validation passed successfully.")
