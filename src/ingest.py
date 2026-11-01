@@ -1,6 +1,7 @@
 from pathlib import Path
 import pandas as pd
 from validation import validate_data
+from features import prepare_features
 
 # Resolve the project folder from this script's location.
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -34,3 +35,22 @@ print(missing_values)
 
 validate_data(df)
 print("Data validation passed successfully.")
+
+print("Preparing features...")
+X, y, timestamps = prepare_features(df)
+print("Features prepared successfully.")
+print("Feature matrix (X):")
+print(X.head())
+print(X.shape)
+print("Target variable (y):")
+print(y.head())
+print(y.shape)
+
+print("Timestamps:")
+print(timestamps.head())
+print(timestamps.shape)
+
+# Check that the lengths of X, y, and timestamps are equal and that timestamps are in chronological order.
+assert len(X) == len(y) == len(timestamps)
+assert timestamps.is_monotonic_increasing
+print("All checks passed: lengths are equal and timestamps are in chronological order.")

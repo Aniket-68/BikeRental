@@ -38,3 +38,13 @@ Build a system that:
 | 8. Testing                | Check calculations, pipelines, and API behavior   | `assert`, pytest, fixtures, API tests                               |
 | 9. MLOps                  | Track experiments and version model releases      | MLflow, dataset fingerprints, reproducibility, promotion, rollback  |
 | 10. Deployment and design | Package, load-test, monitor, and scale            | Docker, CI/CD, workers, latency, throughput, failure handling       |
+
+## Progress
+
+| Stage | Status |
+| ----- | ------ |
+| 1–2. NumPy / pandas exploration | Done (`explore.py`) |
+| 3. Python structure | In progress: `src/ingest.py` (loading), `src/validation.py` (`validate_data`) done; `src/features.py` (`prepare_features`) unfinished |
+| 4–10 | Not started |
+
+Run `python src/ingest.py` from anywhere to load `data/raw/hour.csv` and validate it. The dataset is git-ignored; download the UCI "Bike Sharing Dataset" into `data/raw/`.
