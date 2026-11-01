@@ -24,3 +24,32 @@ stages:
       hash: md5
       md5: 946b4bfe499d564272479e6ab2c29a16
       size: 1161688
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: data/interim/validated.csv
+      hash: md5
+      md5: 946b4bfe499d564272479e6ab2c29a16
+      size: 1161688
+    - path: requirements.txt
+      hash: md5
+      md5: 4e7fcf00a5a24d6ac364f6fd6def25a1
+      size: 8845
+    - path: src/features.py
+      hash: md5
+      md5: d3745546e67ea7b70214466351a35080
+      size: 1731
+    - path: src/prepare.py
+      hash: md5
+      md5: c622745e378b08f2fb1baeef21a0d190
+      size: 1892
+    - path: src/split_data.py
+      hash: md5
+      md5: d9560b6f71e53b1ae38a8c8f4390aeb6
+      size: 1521
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 567ed50a226529d508d6e9ac2d6d0806.dir
+      size: 930544
+      nfiles: 3
