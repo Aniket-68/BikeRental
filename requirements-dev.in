@@ -1,0 +1,5 @@
+# Include the locked runtime dependencies without changing their versions.
+-r requirements.txt
+
+pytest
+httpx
