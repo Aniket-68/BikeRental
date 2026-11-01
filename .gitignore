@@ -1,2 +1,10 @@
 data
 .venv
+# MLflow experiment data and model artifacts
+mlruns/
+mlartifacts/
+mlflow.db
+mlflow.db-*
+
+# Local Python environment
+__pycache__/
