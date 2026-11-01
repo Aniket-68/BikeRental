@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  ingest:
+    cmd: python src/ingest.py
+    deps:
+    - path: data/raw/hour.csv
+      hash: md5
+      md5: d50bd5a6f55131e72a7bedc334e2fce1
+      size: 1156736
+    - path: requirements.txt
+      hash: md5
+      md5: 4e7fcf00a5a24d6ac364f6fd6def25a1
+      size: 8845
+    - path: src/ingest.py
+      hash: md5
+      md5: 0a5f2338eceffd0d0d78a24d0fb19b2f
+      size: 984
+    - path: src/validation.py
+      hash: md5
+      md5: 505c5c8208c4b70dd20e80e638690798
+      size: 2169
+    outs:
+    - path: data/interim/validated.csv
+      hash: md5
+      md5: 946b4bfe499d564272479e6ab2c29a16
+      size: 1161688

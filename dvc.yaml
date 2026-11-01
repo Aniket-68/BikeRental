@@ -1,0 +1,15 @@
+stages:
+  ingest:
+    # Execute this command when the stage needs rebuilding.
+    cmd: python src/ingest.py
+
+    # Changes to any dependency invalidate the cached stage result.
+    deps:
+      - src/ingest.py
+      - src/validation.py
+      - data/raw/hour.csv
+      - requirements.txt
+
+    # DVC versions this generated file and excludes it from Git.
+    outs:
+      - data/interim/validated.csv
